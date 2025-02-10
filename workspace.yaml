@@ -1,5 +1,5 @@
 load_from:
   - grpc_server:
-      host: localhost
+      host: docker_example_user_code
       port: 4000
       location_name: "covid_data_project_location"

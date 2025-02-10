@@ -1,8 +1,14 @@
-from dagster import Definitions
-from ingestion.dlt.definitions import dlt_assets
-from transformation.dbt.definitions import dbt_assets
-from transformation.adhoc.definitions import adhoc_assets
+import dagster as dg
 
-all_assets = dlt_assets + dbt_assets + adhoc_assets
 
-definitions = Definitions(assets=all_assets)
+@dg.asset
+def hello(context: dg.AssetExecutionContext):
+    context.log.info("Hello!")
+
+
+@dg.asset(deps=[hello])
+def world(context: dg.AssetExecutionContext):
+    context.log.info("World!")
+
+
+defs = dg.Definitions(assets=[hello, world])

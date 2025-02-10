@@ -1,5 +1,8 @@
-run_coordinator:
-  module: dagster.core.run_coordinator
-  class: QueuedRunCoordinator
-  config:
-    max_concurrent_runs: 2
+storage:
+  postgres:
+    postgres_db:
+      hostname: docker_example_postgresql
+      username: postgres_user
+      password: postgres_password
+      db_name: postgres_db
+      port: 5432
