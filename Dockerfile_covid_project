@@ -3,11 +3,16 @@ FROM python:3.10-slim
 RUN pip install \
     dagster \
     dagster-postgres \
-    dagster-docker
+    dagster-docker \
+    dlt \
+    dbt-core \
+    dbt-postgres \ 
+    pandas \
+    dlt[parquet]
 
 # Add code location code
 WORKDIR /opt/dagster/app
-COPY dagster/covid_project/ /opt/dagster/app
+COPY dagster/covid_data_project/ /opt/dagster/app
 
 # Run dagster code server on port 4000
 EXPOSE 4000

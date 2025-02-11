@@ -1,0 +1,24 @@
+# dagster/covid_data_project/dbt_project/dbt_project.yml
+
+name: 'covid_dbt_project'
+config-version: 2
+
+profile: 'default'  # We'll configure profiles in Dagster
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed when `dbt clean` is executed
+    - "target"
+    - "dbt_packages"
+
+models:
+    covid_dbt_project:
+        # Config indicated by + and applies to all files under models/example/
+        analysis:
+            +materialized: table
+            +schema: analysis

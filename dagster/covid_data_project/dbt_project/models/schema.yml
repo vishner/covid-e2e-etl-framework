@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: dlt_raw
+    database: "{{ env_var('DBT_POSTGRES_DB') }}"
+    schema: dlt_raw
+    tables:
+      - name: csse_covid_19_daily_reports
+        description: "Raw COVID-19 daily reports data loaded from JHU CSSE GitHub repository" 
+      - name: csse_covid_19_daily_reports_us
+        description: "Raw COVID-19 daily reports data loaded from JHU CSSE GitHub repository" 
